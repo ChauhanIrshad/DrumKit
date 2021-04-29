@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum-kit</title>
+    <link rel="stylesheet" href="DrumKit.css">
+</head>
+<body>
+    <Div class="container">
+        <div data-key = "65" class="box"> <h1>A</h1> <span>boom</span></div>
+        <div data-key = "83" class="box"> <h1>S</h1> <span>hihat</span></div>
+        <div data-key = "68" class="box"> <h1>D</h1> <span>kick</span></div>
+        <div data-key = "70" class="box"> <h1>F</h1> <span>openhat</span></div>
+        <div data-key = "71" class="box"> <h1>G</h1> <span>ride</span></div>
+        <div data-key = "72" class="box"> <h1>H</h1> <span>snare</span></div>
+        <div data-key = "74" class="box"> <h1>J</h1> <span>tink</span></div>
+        <div data-key = "75" class="box"> <h1>K</h1> <span>tom</span></div>
+    </Div>
+
+    <audio data-key = "65" src="sound/boom.wav"></audio>
+    <audio data-key = "83" src="sound/hihat.wav"></audio>
+    <audio data-key = "68" src="sound/kick.wav"></audio>
+    <audio data-key = "70" src="sound/openhat.wav"></audio>
+    <audio data-key = "71" src="sound/ride.wav"></audio>
+    <audio data-key = "72" src="sound/snare.wav"></audio>
+    <audio data-key = "74" src="sound/tink.wav"></audio>
+    <audio data-key = "75" src="sound/tom.wav"></audio>
+
+    
+    <script>
+
+        window.addEventListener('keydown',function(e){
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const box = document.querySelector(`.box[data-key="${e.keyCode}"`);
+                  
+            if(!audio) return ;
+            audio.currentTime = 0;
+            audio.play();
+            box.classList.add('playing');
+        });
+         
+        function removeTransition(e){
+            if(e.propertyName != 'transform') return;
+            this.classList.remove('playing');
+        }
+
+        const boxes = document.querySelectorAll('.box');
+        
+        boxes.forEach(box => box.addEventListener('transitionend',removeTransition));
+        
+        </script>
+    
+
+</body>
+</html>

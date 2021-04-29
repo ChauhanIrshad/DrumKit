@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: aqua;
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    
+}
+
+.box{
+    margin: 1px;
+    padding: 10px;
+    border: 2px solid black;
+    height: 70px;
+    flex: 1 1 0px;
+    transition: all 0.06s;
+}
+
+h1{  
+    font-family: sans-serif;
+    text-align: center;
+}
+
+span{
+    display: block;
+    text-align: center;
+}
+
+
+.playing{
+    border: 3px solid;
+    box-shadow: 0 0 10px yellow;
+    transform: scale(1.1);
+}
